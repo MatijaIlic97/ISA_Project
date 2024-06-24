@@ -13,6 +13,7 @@ public class UserController {
         return "nesto";
     }
 
+
     @GetMapping("getlist")
     public List<String> getList(){
         return List.of("nesto3", "nesto2");
