@@ -23,16 +23,12 @@ public class UserController {
         return List.of("nesto3", "nesto2");
     }
 
-    @PostMapping("createuser")
-    public boolean createUser(String firstName, String lastName){
-        return true;
-    }
 
     @PostMapping("createuserbody")
     public ResponseEntity<?> createUserBody(@RequestBody @Valid UserModel userModel, BindingResult result){
         if(result.hasErrors()){
             return new ResponseEntity<>("Neuspesno registrovan", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return new ResponseEntity<UserModel>(userModel, HttpStatus.CREATED);
+        return new ResponseEntity<>(userModel, HttpStatus.CREATED);
     }
 }
