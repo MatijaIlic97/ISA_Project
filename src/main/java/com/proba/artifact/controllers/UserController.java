@@ -1,27 +1,35 @@
 package com.proba.artifact.controllers;
 
+import com.proba.artifact.entities.User;
 import com.proba.artifact.models.UserModel;
+import com.proba.artifact.repositories.IUserRepository;
 import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("user")
+@RequiredArgsConstructor
 public class UserController {
+    private final IUserRepository userRepository;
     @CrossOrigin("*")
     @GetMapping("getfirstname")
-    public String getFirstName(){
-        return "nesto123";
+    public Optional<User> getFirstName(){
+        var result = userRepository.findById(1);
+        return result;
     }
 
 
     @GetMapping("getlist")
-    public List<String> getList(){
-        return List.of("nesto3", "nesto2");
+    public List<User> getList(){
+        var result = userRepository.findAll();
+        return result;
     }
 
 

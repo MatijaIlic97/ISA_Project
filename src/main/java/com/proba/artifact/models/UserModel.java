@@ -8,13 +8,13 @@ import java.util.Date;
 
 @Data
 public class UserModel {
-    private int id;
+    private Long id;
     @NotNull
     private String firstName;
     private String lastName;
-    @Email
-    private String email;
-    private String belt;
-    private Date dateOfBirth;
-    private Date startDate;
+//    @Email
+//    private String email;
+//    private String belt;
+//    private Date dateOfBirth;
+//    private Date startDate;
 }
