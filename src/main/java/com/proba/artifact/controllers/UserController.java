@@ -1,6 +1,7 @@
 package com.proba.artifact.controllers;
 
 import com.proba.artifact.entities.User;
+import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.UserModel;
 import com.proba.artifact.repositories.IUserRepository;
 import jakarta.validation.Valid;
@@ -27,9 +28,8 @@ public class UserController {
 
 
     @GetMapping("getlist")
-    public List<User> getList(){
-        var result = userRepository.findAll();
-        return result;
+    public List<UserModel> getList(){
+        return UserMapper.toModelList(userRepository.findAll());
     }
 
 
@@ -38,6 +38,8 @@ public class UserController {
         if(result.hasErrors()){
             return new ResponseEntity<>("Neuspesno registrovan", HttpStatus.INTERNAL_SERVER_ERROR);
         }
+        var entity = UserMapper.toEntity(userModel);
+        userRepository.save(entity);
         return new ResponseEntity<>(userModel, HttpStatus.CREATED);
     }
 }
