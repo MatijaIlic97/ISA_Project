@@ -5,13 +5,15 @@ import com.proba.artifact.models.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class UserMapper {
     public static UserModel toModel(User entity){
-        return UserModel.builder()
-                .firstName(entity.getFirstName())
-                .lastName(entity.getLastName())
-                .build();
+            return UserModel.builder()
+                    .firstName(entity.getFirstName())
+                    .lastName(entity.getLastName())
+                    .build();
+
     }
     public static List<UserModel> toModelList(List<User> entities){
         var list = new ArrayList<UserModel>();
