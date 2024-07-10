@@ -20,6 +20,7 @@ import java.util.Optional;
 @CrossOrigin("*")
 public class UserController {
     private final IUserRepository userRepository;
+
     @CrossOrigin("*")
     @GetMapping("getfirstname")
     public Optional<User> getFirstName(){
@@ -27,12 +28,10 @@ public class UserController {
         return result;
     }
 
-
     @GetMapping("getlist")
     public List<UserModel> getList(){
         return UserMapper.toModelList(userRepository.findAll());
     }
-
 
     @PostMapping("createuserbody")
     public ResponseEntity<?> createUserBody(@RequestBody @Valid UserModel userModel, BindingResult result){
