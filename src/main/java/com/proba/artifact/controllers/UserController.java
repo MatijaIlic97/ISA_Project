@@ -1,9 +1,6 @@
 package com.proba.artifact.controllers;
 
-import com.proba.artifact.entities.User;
-import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.UserModel;
-import com.proba.artifact.repositories.IUserRepository;
 import com.proba.artifact.services.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -13,7 +10,6 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("user")
