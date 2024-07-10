@@ -4,6 +4,7 @@ import com.proba.artifact.entities.User;
 import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.UserModel;
 import com.proba.artifact.repositories.IUserRepository;
+import com.proba.artifact.services.IUserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -19,27 +20,19 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @CrossOrigin("*")
 public class UserController {
-    private final IUserRepository userRepository;
-
-    @CrossOrigin("*")
-    @GetMapping("getfirstname")
-    public Optional<User> getFirstName(){
-        var result = userRepository.findById(1);
-        return result;
-    }
+    private final IUserService userService;
 
     @GetMapping("getlist")
     public List<UserModel> getList(){
-        return UserMapper.toModelList(userRepository.findAll());
+        return userService.findAll();
     }
 
-    @PostMapping("createuserbody")
-    public ResponseEntity<?> createUserBody(@RequestBody @Valid UserModel userModel, BindingResult result){
+    @PostMapping("create")
+    public ResponseEntity<?> create(@RequestBody @Valid UserModel userModel, BindingResult result){
         if(result.hasErrors()){
             return new ResponseEntity<>("Neuspesno registrovan", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        var entity = UserMapper.toEntity(userModel);
-        userRepository.save(entity);
-        return new ResponseEntity<>(userModel, HttpStatus.CREATED);
+
+        return new ResponseEntity<>(userService.create(userModel), HttpStatus.CREATED);
     }
 }
