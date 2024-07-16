@@ -1,5 +1,6 @@
 package com.proba.artifact.models;
 
+import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
@@ -13,8 +14,8 @@ public class UserModel {
     private String firstName;
     @NotEmpty
     private String lastName;
-//    @Email
-//    private String email;
+    @Email
+    private String email;
 //    private String belt;
 //    private Date dateOfBirth;
 //    private Date startDate;
