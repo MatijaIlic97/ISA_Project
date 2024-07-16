@@ -1,7 +1,9 @@
 package com.proba.artifact.mappers;
 
 import com.proba.artifact.entities.User;
+import com.proba.artifact.models.RegisterUserModel;
 import com.proba.artifact.models.UserModel;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,11 +24,20 @@ public class UserMapper {
         }
         return list;
     }
-    public static User toEntity(UserModel model){
+    public static User toEntity(UserModel model) {
         User user = new User();
         user.setId(model.getId());
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
+        user.setEmail(model.getEmail());
+       // user.setContactNumber(model.getContactNumber());
+        return user;
+    }
+
+    public static User toEntity(RegisterUserModel model, PasswordEncoder passwordEncoder) {
+        User user = new User();
+        user.setEmail(model.getEmail());
+        user.setPassword(passwordEncoder.encode(model.getPassword()));
         return user;
     }
 }
