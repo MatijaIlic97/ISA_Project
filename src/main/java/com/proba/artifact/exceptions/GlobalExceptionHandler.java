@@ -48,6 +48,7 @@ public class GlobalExceptionHandler {
         ProblemDetail errorDetail;
 
         errorDetail = ProblemDetail.forStatusAndDetail(HttpStatusCode.valueOf(403), exception.getMessage());
+        errorDetail.setProperty("description", "Unauthorized.");
 
         return errorDetail;
     }

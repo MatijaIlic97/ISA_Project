@@ -14,6 +14,7 @@ public class UserMapper {
             return UserModel.builder()
                     .firstName(entity.getFirstName())
                     .lastName(entity.getLastName())
+                    .email(entity.getEmail())
                     .build();
 
     }

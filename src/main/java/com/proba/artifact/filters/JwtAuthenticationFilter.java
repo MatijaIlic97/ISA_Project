@@ -24,7 +24,6 @@ import java.io.IOException;
 @Component
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
-    private final HandlerExceptionResolver handlerExceptionResolver;
     private final JwtService jwtService;
 //  todo:: move this repository on different position :: maybe JwtService
 //  private final ITokenRepository tokenRepository;

@@ -36,26 +36,26 @@ public class AuthenticationService {
     }
 
 
-//    public LoginResponseModel authenticate(LoginUserModel model) {
-//        authenticationManager.authenticate(
-//                new UsernamePasswordAuthenticationToken(
-//                        model.getEmail(),
-//                        model.getPassword()
-//                )
-//        );
-//
-//        var authenticatedUser = userRepository.findByEmail(model.getEmail())
-//                .orElseThrow(() -> new UsernameNotFoundException("User with email " + model.getEmail() + " not found"));
-//
-//        String jwtToken = jwtService.generateToken(authenticatedUser);
-//        String refreshToken = jwtService.generateRefreshToken(authenticatedUser);
-//
-////        revokeAllUserTokens(authenticatedUser.getId());
-////        saveUserToken(authenticatedUser, jwtToken, refreshToken);
-//
-//        return LoginResponseModel.builder()
-//                .token(jwtToken)
-//                .refreshToken(refreshToken).build();
-//    }
+    public LoginResponseModel authenticate(LoginUserModel model) {
+        authenticationManager.authenticate(
+                new UsernamePasswordAuthenticationToken(
+                        model.getEmail(),
+                        model.getPassword()
+                )
+        );
+
+        var authenticatedUser = userRepository.findByEmail(model.getEmail())
+                .orElseThrow(() -> new UsernameNotFoundException("User with email " + model.getEmail() + " not found"));
+
+        String jwtToken = jwtService.generateToken(authenticatedUser);
+        String refreshToken = jwtService.generateRefreshToken(authenticatedUser);
+
+//        revokeAllUserTokens(authenticatedUser.getId());
+//        saveUserToken(authenticatedUser, jwtToken, refreshToken);
+
+        return LoginResponseModel.builder()
+                .token(jwtToken)
+                .refreshToken(refreshToken).build();
+    }
 
 }
