@@ -1,7 +1,5 @@
 package com.proba.artifact.configuration;
 
-
-import com.proba.artifact.constants.RoleConstants;
 import com.proba.artifact.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

@@ -9,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 public class UserMapper {
     public static UserModel toModel(User entity){
