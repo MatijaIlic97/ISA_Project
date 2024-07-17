@@ -53,9 +53,6 @@ public class JwtService {
         return buildToken(extraClaims, jwtSubject, jwtExpiration);
     }
 
-    public long getExpirationTime() {
-        return jwtExpiration;
-    }
 
     private String buildToken(
             Map<String, Object> extraClaims,
