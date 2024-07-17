@@ -33,7 +33,6 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**")
                 .permitAll()
-                .requestMatchers("/user/getlist").hasAnyRole(RoleConstants.TRENER)
                 .anyRequest()
                 .authenticated()
                 .and()
