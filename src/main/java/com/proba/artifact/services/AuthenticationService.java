@@ -1,11 +1,15 @@
 package com.proba.artifact.services;
 
+import com.proba.artifact.entities.Token;
+import com.proba.artifact.entities.User;
+import com.proba.artifact.enums.TokenTypeEnum;
 import com.proba.artifact.exceptions.user.UserAlreadyExistException;
 import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.LoginResponseModel;
 import com.proba.artifact.models.LoginUserModel;
 import com.proba.artifact.models.RegisterUserModel;
 import com.proba.artifact.models.UserModel;
+import com.proba.artifact.repositories.ITokenRepository;
 import com.proba.artifact.repositories.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class AuthenticationService {
     private final IUserRepository userRepository;
+    private final ITokenRepository tokenRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
@@ -50,12 +55,40 @@ public class AuthenticationService {
         String jwtToken = jwtService.generateToken(authenticatedUser);
         String refreshToken = jwtService.generateRefreshToken(authenticatedUser);
 
-//        revokeAllUserTokens(authenticatedUser.getId());
-//        saveUserToken(authenticatedUser, jwtToken, refreshToken);
+        revokeAllUserTokens(authenticatedUser.getId());
+        saveUserToken(authenticatedUser, jwtToken, refreshToken);
 
         return LoginResponseModel.builder()
                 .token(jwtToken)
                 .refreshToken(refreshToken).build();
     }
+
+    private void revokeAllUserTokens(Integer userId) {
+        var validUserTokens = tokenRepository.findAllValidTokenByUser(userId);
+
+        if (validUserTokens.isEmpty())
+            return;
+
+        validUserTokens.forEach(token -> {
+            token.setExpired(true);
+            token.setRevoked(true);
+        });
+
+        tokenRepository.saveAll(validUserTokens);
+    }
+
+    private void saveUserToken(User user, String jwtToken, String refreshToken) {
+        var token = Token.builder()
+                .user(user)
+                .token(jwtToken)
+                .refreshToken(refreshToken)
+                .tokenType(TokenTypeEnum.BEARER)
+                .expired(false)
+                .revoked(false)
+                .build();
+
+        tokenRepository.save(token);
+    }
+
 
 }
