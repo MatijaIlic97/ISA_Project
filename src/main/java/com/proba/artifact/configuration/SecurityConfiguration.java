@@ -1,5 +1,6 @@
 package com.proba.artifact.configuration;
 
+import com.proba.artifact.constants.RoleConstants;
 import com.proba.artifact.filters.JwtAuthenticationFilter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -29,11 +30,14 @@ public class SecurityConfiguration {
         http.csrf()
                 .disable()
                 .authorizeHttpRequests()
-//                .requestMatchers("/auth/**")
-                .anyRequest()
-                .permitAll()
+                .requestMatchers("/auth/**")
+
 //                .anyRequest()
-//                .authenticated()
+                .permitAll()
+                .requestMatchers("/user/get-page-list").hasAnyRole(RoleConstants.TRENER)
+
+                .anyRequest()
+                .authenticated()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
