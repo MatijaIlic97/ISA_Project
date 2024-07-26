@@ -1,8 +1,6 @@
 package com.proba.artifact.services;
 
-import com.proba.artifact.exceptions.user.UserAlreadyExistException;
 import com.proba.artifact.mappers.TrainingMapper;
-import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.TrainingModel;
 import com.proba.artifact.repositories.ITrainingRepository;
 import lombok.RequiredArgsConstructor;
