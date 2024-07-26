@@ -3,6 +3,8 @@ package com.proba.artifact.controllers;
 import com.proba.artifact.models.LoginUserModel;
 import com.proba.artifact.models.RegisterUserModel;
 import com.proba.artifact.services.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,9 +28,9 @@ public class AuthenticationController {
         return ResponseEntity.ok(authenticationService.authenticate(model));
     }
 
-//    @PostMapping("/refresh-token")
-//    public ResponseEntity<?> refreshToken(HttpServletRequest request, HttpServletResponse response) {
-//        return ResponseEntity.ok(authenticationService.refreshToken(request, response));
-//    }
+    @PostMapping("/refresh-token")
+    public ResponseEntity<?> refreshToken(HttpServletRequest request, HttpServletResponse response) {
+        return ResponseEntity.ok(authenticationService.refreshToken(request, response));
+    }
 
 }

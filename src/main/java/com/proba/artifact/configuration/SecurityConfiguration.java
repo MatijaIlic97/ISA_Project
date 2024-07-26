@@ -31,13 +31,12 @@ public class SecurityConfiguration {
                 .disable()
                 .authorizeHttpRequests()
                 .requestMatchers("/auth/**")
-
-//                .anyRequest()
                 .permitAll()
                 .requestMatchers("/user/get-page-list").hasAnyRole(RoleConstants.TRENER)
-
+                .requestMatchers("/user/delete").hasAnyRole(RoleConstants.TRENER)
                 .anyRequest()
                 .authenticated()
+//                .permitAll()
                 .and()
                 .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
