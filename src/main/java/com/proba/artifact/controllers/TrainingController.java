@@ -23,4 +23,9 @@ public class TrainingController {
         }
         return new ResponseEntity<>(trainingService.create(trainingModel), HttpStatus.CREATED);
     }
+
+    @PostMapping("add-users")
+    public ResponseEntity<?> addUsers(){
+        return null;
+    }
 }
