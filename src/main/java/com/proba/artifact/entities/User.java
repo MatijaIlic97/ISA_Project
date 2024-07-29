@@ -32,6 +32,12 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     @JsonManagedReference
     private List<Role> roles;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "training_users",
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "training_id", referencedColumnName = "id"))
+    @JsonManagedReference
+    private List<Training> trainings;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

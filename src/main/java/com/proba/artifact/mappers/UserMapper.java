@@ -27,15 +27,23 @@ public class UserMapper {
         }
         return list;
     }
-//    public static User toEntity(UserModel model) {
-//        User user = new User();
-//        user.setId(model.getId());
-//        user.setFirstName(model.getFirstName());
-//        user.setLastName(model.getLastName());
-//        user.setEmail(model.getEmail());
-//       // user.setContactNumber(model.getContactNumber());
-//        return user;
-//    }
+
+    public static List<User> toEntityList(List<UserModel> models){
+        var list = new ArrayList<User>();
+        for(var model:models){
+            list.add(toEntity(model));
+        }
+        return list;
+    }
+    public static User toEntity(UserModel model) {
+        User user = new User();
+        user.setId(model.getId());
+        user.setFirstName(model.getFirstName());
+        user.setLastName(model.getLastName());
+        user.setEmail(model.getEmail());
+       // user.setContactNumber(model.getContactNumber());
+        return user;
+    }
 
     public static User toEntity(RegisterUserModel model, PasswordEncoder passwordEncoder) {
         User user = new User();

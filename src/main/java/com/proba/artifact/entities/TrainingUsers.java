@@ -11,13 +11,16 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name="trainings")
+@Table(name="training_users")
 @NoArgsConstructor
 @AllArgsConstructor
-public class Training {
+public class TrainingUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name="date")
-    private Date date;
+    @Column
+    private Integer trainingId;
+    @OneToMany(mappedBy = "trainings")
+    @JsonBackReference
+    private List<User> users;
 }
