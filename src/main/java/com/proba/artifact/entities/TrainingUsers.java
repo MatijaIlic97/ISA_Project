@@ -18,7 +18,7 @@ public class TrainingUsers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
+    @Column(name="training_id")
     private Integer trainingId;
     @OneToMany(mappedBy = "trainings")
     @JsonBackReference

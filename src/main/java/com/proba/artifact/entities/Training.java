@@ -1,6 +1,7 @@
 package com.proba.artifact.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -20,4 +21,10 @@ public class Training {
     private Integer id;
     @Column(name="date")
     private Date date;
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "training_users",
+            joinColumns = @JoinColumn(name = "training_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    @JsonManagedReference
+    private List<User> users;
 }

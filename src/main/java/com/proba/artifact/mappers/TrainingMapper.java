@@ -15,6 +15,7 @@ public class TrainingMapper {
     }
     public static Training toEntity(TrainingModel model) {
         Training training = new Training();
+        training.setId(model.getId());
         training.setDate(model.getDate());
         return training;
     }
