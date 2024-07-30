@@ -1,5 +1,6 @@
 package com.proba.artifact.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.Data;
@@ -32,6 +33,9 @@ public class User implements UserDetails {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     @JsonManagedReference
     private List<Role> roles;
+    @ManyToMany(mappedBy = "users")
+    @JsonBackReference
+    private List<Training> trainings;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
