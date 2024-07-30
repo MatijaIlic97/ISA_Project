@@ -1,6 +1,5 @@
 package com.proba.artifact.services;
 
-import com.proba.artifact.entities.Training;
 import com.proba.artifact.mappers.TrainingMapper;
 import com.proba.artifact.models.TrainingModel;
 import com.proba.artifact.repositories.ITrainingRepository;

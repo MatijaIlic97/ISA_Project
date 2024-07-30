@@ -1,9 +1,7 @@
 package com.proba.artifact.mappers;
 
 import com.proba.artifact.entities.Training;
-import com.proba.artifact.entities.User;
 import com.proba.artifact.models.TrainingModel;
-import com.proba.artifact.models.UserModel;
 
 import java.util.ArrayList;
 import java.util.List;

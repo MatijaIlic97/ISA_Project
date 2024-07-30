@@ -1,10 +1,7 @@
 package com.proba.artifact.controllers;
 
-import com.proba.artifact.entities.Training;
 import com.proba.artifact.models.TrainingModel;
-import com.proba.artifact.models.UserModel;
 import com.proba.artifact.services.ITrainingService;
-import com.proba.artifact.services.TrainingService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
