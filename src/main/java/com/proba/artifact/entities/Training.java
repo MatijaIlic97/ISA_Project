@@ -20,7 +20,7 @@ public class Training {
     private Integer id;
     @Column(name="date")
     private Date date;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.MERGE)
     @JoinTable(name = "training_users",
             joinColumns = @JoinColumn(name = "training_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))

@@ -4,6 +4,7 @@ import com.proba.artifact.entities.User;
 import com.proba.artifact.models.RegisterUserModel;
 import com.proba.artifact.models.UserModel;
 import com.proba.artifact.models.UserPageModel;
+import com.proba.artifact.models.UserTrainingModel;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -20,6 +21,13 @@ public class UserMapper {
                     .build();
 
     }
+
+    public static UserTrainingModel toUserTrainingModel(User entity){
+        return UserTrainingModel.builder()
+                .id(entity.getId())
+                .build();
+
+    }
     public static List<UserModel> toModelList(List<User> entities){
         var list = new ArrayList<UserModel>();
         for(var entity : entities){
@@ -27,15 +35,32 @@ public class UserMapper {
         }
         return list;
     }
-//    public static User toEntity(UserModel model) {
-//        User user = new User();
-//        user.setId(model.getId());
+
+    public static List<UserTrainingModel> toUserTrainingModelList(List<User> entities){
+        var list = new ArrayList<UserTrainingModel>();
+        for(var entity : entities){
+            list.add(toUserTrainingModel(entity));
+        }
+        return list;
+    }
+
+    public static User toEntity(UserTrainingModel model) {
+        User user = new User();
+        user.setId(model.getId());
 //        user.setFirstName(model.getFirstName());
 //        user.setLastName(model.getLastName());
 //        user.setEmail(model.getEmail());
-//       // user.setContactNumber(model.getContactNumber());
-//        return user;
-//    }
+       // user.setContactNumber(model.getContactNumber());
+        return user;
+    }
+
+    public static List<User> toEntityList(List<UserTrainingModel> models){
+        var list = new ArrayList<User>();
+        for(var model : models){
+            list.add(toEntity(model));
+        }
+        return list;
+    }
 
     public static User toEntity(RegisterUserModel model, PasswordEncoder passwordEncoder) {
         User user = new User();
