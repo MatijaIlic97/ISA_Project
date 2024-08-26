@@ -5,6 +5,7 @@ import com.proba.artifact.exceptions.user.UserException;
 import com.proba.artifact.mappers.UserMapper;
 import com.proba.artifact.models.UserModel;
 import com.proba.artifact.models.UserPageModel;
+import com.proba.artifact.models.UserProfileModel;
 import com.proba.artifact.repositories.IUserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -28,6 +29,11 @@ public class UserService implements IUserService{
         var result = userRepository.findAll(pageRequest);
         return UserMapper.toModelPagedList(result);
     }
+
+    @Override
+    public UserModel findById(Integer id){return UserMapper.toModel(userRepository.getReferenceById(id));}
+    public UserProfileModel findProfileById(Integer id){return UserMapper.toProfileModel(userRepository.getReferenceById(id));}
+
 
     @Override
     public UserModel create(UserModel model) {

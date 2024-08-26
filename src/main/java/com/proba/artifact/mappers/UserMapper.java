@@ -1,15 +1,14 @@
 package com.proba.artifact.mappers;
 
 import com.proba.artifact.entities.User;
-import com.proba.artifact.models.RegisterUserModel;
-import com.proba.artifact.models.UserModel;
-import com.proba.artifact.models.UserPageModel;
-import com.proba.artifact.models.UserTrainingModel;
+import com.proba.artifact.models.*;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 public class UserMapper {
     public static UserModel toModel(User entity){
@@ -18,7 +17,19 @@ public class UserMapper {
                     .firstName(entity.getFirstName())
                     .lastName(entity.getLastName())
                     .email(entity.getEmail())
+//                    .numberOfTrainings(entity.getTrainings().size())
                     .build();
+
+    }
+
+    public static UserProfileModel toProfileModel(User entity){
+        return UserProfileModel.builder()
+                .id(entity.getId())
+                .firstName(entity.getFirstName())
+                .lastName(entity.getLastName())
+                .email(entity.getEmail())
+                .numberOfTrainings(entity.getTrainings().size())
+                .build();
 
     }
 
@@ -87,4 +98,5 @@ public class UserMapper {
                 .totalElements(pageEntity.getTotalElements())
                 .build();
     }
+
 }

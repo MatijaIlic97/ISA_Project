@@ -2,7 +2,9 @@ package com.proba.artifact.controllers;
 
 import com.proba.artifact.models.UserModel;
 import com.proba.artifact.models.UserPageModel;
+import com.proba.artifact.models.UserProfileModel;
 import com.proba.artifact.services.IUserService;
+import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.PageRequest;
@@ -19,6 +21,9 @@ import java.util.List;
 @CrossOrigin("*")
 public class UserController {
     private final IUserService userService;
+
+    @GetMapping("profile")
+    public UserProfileModel getProfile(Integer id) {return userService.findProfileById(id);}
 
     @GetMapping("getlist")
     public List<UserModel> getList(){

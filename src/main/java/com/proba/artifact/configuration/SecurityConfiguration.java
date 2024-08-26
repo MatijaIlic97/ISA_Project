@@ -33,6 +33,8 @@ public class SecurityConfiguration {
                 .requestMatchers("/auth/**")
                 .permitAll()
                 .requestMatchers("/user/get-page-list").hasAnyRole(RoleConstants.TRENER)
+                .requestMatchers("/user/create").hasAnyRole(RoleConstants.TRENER)
+                .requestMatchers("/user/update").hasAnyRole(RoleConstants.TRENER)
                 .requestMatchers("/user/delete").hasAnyRole(RoleConstants.TRENER)
                 .anyRequest()
 //                .authenticated()

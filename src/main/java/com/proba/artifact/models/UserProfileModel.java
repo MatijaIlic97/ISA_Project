@@ -6,10 +6,9 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
 
-
 @Data
 @Builder
-public class UserModel {
+public class UserProfileModel {
     private Integer id;
     @NotEmpty
     private String firstName;
@@ -19,8 +18,5 @@ public class UserModel {
     private String email;
     @NotBlank
     private String password;
-//    private Integer numberOfTrainings;
-//    private String belt;
-//    private Date dateOfBirth;
-//    private Date startDate;
+    private Integer numberOfTrainings;
 }
