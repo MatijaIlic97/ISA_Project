@@ -8,6 +8,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -27,6 +28,18 @@ public class User implements UserDetails {
     private String email;
     @Column(name = "password")
     private String password;
+    @Column(name="belt")
+    private String belt;
+    @Column(name="weight")
+    private int weight;
+    @Column(name="height")
+    private int height;
+    @Column(name="date_of_birth")
+    private Date date_of_birth;
+    @Column(name="start_date")
+    private Date start_date;
+    @Column(name="gender")
+    private String gender;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),

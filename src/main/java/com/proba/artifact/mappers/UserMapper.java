@@ -1,10 +1,13 @@
 package com.proba.artifact.mappers;
 
+import com.proba.artifact.entities.Training;
 import com.proba.artifact.entities.User;
 import com.proba.artifact.models.*;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import java.sql.Date;
+import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,17 +18,30 @@ public class UserMapper {
                     .firstName(entity.getFirstName())
                     .lastName(entity.getLastName())
                     .email(entity.getEmail())
+                    .belt(entity.getBelt())
+                    .weight(entity.getWeight())
+                    .height(entity.getHeight())
+                    .dateOfBirth(entity.getDate_of_birth())
+                    .startDate(entity.getStart_date())
+                    .gender(entity.getGender())
 //                    .numberOfTrainings(entity.getTrainings().size())
                     .build();
 
     }
 
     public static UserProfileModel toProfileModel(User entity){
+
         return UserProfileModel.builder()
                 .id(entity.getId())
                 .firstName(entity.getFirstName())
                 .lastName(entity.getLastName())
                 .email(entity.getEmail())
+                .belt(entity.getBelt())
+                .weight(entity.getWeight())
+                .height(entity.getHeight())
+                .dateOfBirth(entity.getDate_of_birth())
+                .startDate(entity.getStart_date())
+                .gender(entity.getGender())
                 .numberOfTrainings(entity.getTrainings().size())
                 .build();
 
@@ -84,6 +100,12 @@ public class UserMapper {
         user.setFirstName(model.getFirstName());
         user.setLastName(model.getLastName());
         user.setEmail(model.getEmail());
+        user.setBelt(model.getBelt());
+        user.setWeight(model.getWeight());
+        user.setHeight(model.getHeight());
+        user.setDate_of_birth(model.getDateOfBirth());
+        user.setStart_date(model.getStartDate());
+        user.setGender(model.getGender());
 //        user.setContactNumber(model.getContactNumber());
         user.setPassword(passwordEncoder.encode(model.getPassword()));
         return user;

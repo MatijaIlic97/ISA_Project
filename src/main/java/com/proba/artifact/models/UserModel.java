@@ -5,6 +5,9 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 import lombok.Data;
+import org.aspectj.weaver.ast.Not;
+
+import java.sql.Date;
 
 
 @Data
@@ -20,7 +23,11 @@ public class UserModel {
     @NotBlank
     private String password;
 //    private Integer numberOfTrainings;
-//    private String belt;
-//    private Date dateOfBirth;
-//    private Date startDate;
+    @NotEmpty
+    private String belt;
+    private int height;
+    private int weight;
+    private Date dateOfBirth;
+    private Date startDate;
+    private String gender;
 }
