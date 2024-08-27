@@ -1,13 +1,10 @@
 package com.proba.artifact.mappers;
 
-import com.proba.artifact.entities.Training;
 import com.proba.artifact.entities.User;
 import com.proba.artifact.models.*;
 import org.springframework.data.domain.Page;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import java.sql.Date;
-import java.time.Month;
 import java.util.ArrayList;
 import java.util.List;
 
