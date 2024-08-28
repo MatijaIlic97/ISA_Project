@@ -29,4 +29,5 @@ public class UserModel {
     private Date dateOfBirth;
     private Date startDate;
     private String gender;
+    private String profile;
 }

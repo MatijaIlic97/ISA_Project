@@ -34,6 +34,10 @@ public class UserService implements IUserService{
     public UserModel findById(Integer id){return UserMapper.toModel(userRepository.getReferenceById(id));}
     public UserProfileModel findProfileById(Integer id){return UserMapper.toProfileModel(userRepository.getReferenceById(id));}
 
+    public UserProfileModel findByProfile(String profile) {
+        return UserMapper.toProfileModel(userRepository.findByProfile(profile));
+    }
+
 
     @Override
     public UserModel create(UserModel model) {

@@ -22,7 +22,7 @@ public class UserController {
     private final IUserService userService;
 
     @GetMapping("profile")
-    public UserProfileModel getProfile(Integer id) {return userService.findProfileById(id);}
+    public UserProfileModel getProfile(String profile) {return userService.findByProfile(profile);}
 
     @GetMapping("getlist")
     public List<UserModel> getList(){

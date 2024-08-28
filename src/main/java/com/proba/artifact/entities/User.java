@@ -40,6 +40,7 @@ public class User implements UserDetails {
     private Date start_date;
     @Column(name="gender")
     private String gender;
+    private String profile;
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "user_roles",
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),

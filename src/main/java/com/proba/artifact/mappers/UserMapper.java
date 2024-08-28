@@ -21,6 +21,7 @@ public class UserMapper {
                     .dateOfBirth(entity.getDate_of_birth())
                     .startDate(entity.getStart_date())
                     .gender(entity.getGender())
+                    .profile(entity.getProfile())
 //                    .numberOfTrainings(entity.getTrainings().size())
                     .build();
 
@@ -39,6 +40,7 @@ public class UserMapper {
                 .dateOfBirth(entity.getDate_of_birth())
                 .startDate(entity.getStart_date())
                 .gender(entity.getGender())
+                .profile(entity.getProfile())
                 .numberOfTrainings(entity.getTrainings().size())
                 .build();
 
@@ -103,6 +105,7 @@ public class UserMapper {
         user.setDate_of_birth(model.getDateOfBirth());
         user.setStart_date(model.getStartDate());
         user.setGender(model.getGender());
+        user.setProfile(model.getProfile());
 //        user.setContactNumber(model.getContactNumber());
         user.setPassword(passwordEncoder.encode(model.getPassword()));
         return user;
