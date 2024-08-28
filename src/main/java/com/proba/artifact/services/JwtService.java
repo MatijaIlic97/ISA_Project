@@ -45,6 +45,7 @@ public class JwtService {
         claims.put("lastName", userDetails.getLastName());
 //        claims.put("contactNumber", userDetails.getContactNumber());
         claims.put("roles", userDetails.getAuthorities());
+        claims.put("profile", userDetails.getProfile());
 
         return generateToken(claims, userDetails.getEmail());
     }

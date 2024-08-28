@@ -1,5 +1,6 @@
 package com.proba.artifact.models;
 
+import com.proba.artifact.entities.Role;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;

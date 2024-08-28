@@ -44,6 +44,7 @@ public class UserService implements IUserService{
         if (existingUser.isPresent())
             throw new UserAlreadyExistException("User with email " + model.getEmail() + " already exists");
 
+
         var savedUser = userRepository.save(user);
 
         return UserMapper.toModel(savedUser);
