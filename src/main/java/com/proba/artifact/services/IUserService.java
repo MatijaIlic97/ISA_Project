@@ -8,8 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import java.util.List;
 
 public interface IUserService {
-    UserModel findById(Integer id);
-    UserProfileModel findProfileById(Integer id);
     UserProfileModel findByProfile(String profile);
     List<UserModel> findAll();
     UserPageModel findPagedList(PageRequest pageRequest);

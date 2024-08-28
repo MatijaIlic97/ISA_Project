@@ -30,10 +30,6 @@ public class UserService implements IUserService{
         return UserMapper.toModelPagedList(result);
     }
 
-    @Override
-    public UserModel findById(Integer id){return UserMapper.toModel(userRepository.getReferenceById(id));}
-    public UserProfileModel findProfileById(Integer id){return UserMapper.toProfileModel(userRepository.getReferenceById(id));}
-
     public UserProfileModel findByProfile(String profile) {
         return UserMapper.toProfileModel(userRepository.findByProfile(profile));
     }
