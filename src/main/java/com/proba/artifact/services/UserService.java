@@ -42,16 +42,19 @@ public class UserService implements IUserService{
         var existingUser = userRepository.findByEmail(model.getEmail());
         var existingProfile = userRepository.findByProfile(model.getProfile());
         var existing = existingProfile;
-        var str = existingProfile.getProfile();
+        var str = model.getProfile();
+        if(existingProfile != null)
+            str = existingProfile.getProfile();
+
 
         if (existingUser.isPresent())
             throw new UserAlreadyExistException("User with email " + model.getEmail() + " already exists");
 
-
-        while(existing != null){
+        while (existing != null) {
             str = existing.getProfile().concat("1");
             existing = userRepository.findByProfile(str);
         }
+
         user.setProfile(str);
 
 
