@@ -40,9 +40,19 @@ public class UserService implements IUserService{
         var user = UserMapper.toEntity(model, passwordEncoder);
 
         var existingUser = userRepository.findByEmail(model.getEmail());
+        var existingProfile = userRepository.findByProfile(model.getProfile());
+        var existing = existingProfile;
+        var str = existingProfile.getProfile();
 
         if (existingUser.isPresent())
             throw new UserAlreadyExistException("User with email " + model.getEmail() + " already exists");
+
+
+        while(existing != null){
+            str = existing.getProfile().concat("1");
+            existing = userRepository.findByProfile(str);
+        }
+        user.setProfile(str);
 
 
         var savedUser = userRepository.save(user);
